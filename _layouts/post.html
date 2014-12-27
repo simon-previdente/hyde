@@ -32,25 +32,26 @@ layout: default
     {% endcase %}
     {{ page.date | date: '%Y' }}
   </span>
-  <p>
-{% assign authorCount = page.authors | size %}
-{% if authorCount == 0 %}
-    No author
-{% elsif authorCount == 1 %}
-    {% assign author = page.authors | first %}
-    {{ site.data.authors[author].name }}
-{% else %}
-    {% for author in page.authors %}
-        {% if forloop.first %}
-            {{ site.data.authors[author].name }}
-        {% elsif forloop.last %}
-            and {{ site.data.authors[author].name }}
-        {% else %}
-            , {{ site.data.authors[author].name }}
-        {% endif %}
-    {% endfor %}
-{% endif %}
-</p>
+  {% assign authorCount = page.authors | size %}
+  {% if authorCount >= 1 %}
+    <span class="post-authors">
+    Article rédigé par 
+    {% if authorCount == 1 %}
+      {% assign author = page.authors | first %}
+      {{ site.data.authors[author].name }}
+    {% else %}
+      {% for author in page.authors %}
+          {% if forloop.first %}
+              {{ site.data.authors[author].name }}
+          {% elsif forloop.last %}
+              et {{ site.data.authors[author].name }}
+          {% else %}
+              , {{ site.data.authors[author].name }}
+          {% endif %}
+      {% endfor %}
+    {% endif %}
+    </span>
+  {% endif %}
   
   {{ content }}
 </div>
