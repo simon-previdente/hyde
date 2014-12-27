@@ -7,7 +7,7 @@ layout: default
   <span class="post-date">{{ page.date | date_to_string }}</span>
   
   <p>
-{% assign authorCount = site.data.authors[page.authors] | size %}
+{% assign authorCount = page.authors | size %}
 {% if authorCount == 0 %}
     No author
 {% elsif authorCount == 1 %}
@@ -15,11 +15,11 @@ layout: default
 {% else %}
     {% for author in page.authors %}
         {% if forloop.first %}
-            {{ author.name }}
+            {{ site.data.authors[author].name }}
         {% elsif forloop.last %}
-            and {{ author.name }}
+            and {{ site.data.authors[author].name }}
         {% else %}
-            , {{ author.name }}
+            , {{ site.data.authors[author].name }}
         {% endif %}
     {% endfor %}
 {% endif %}
