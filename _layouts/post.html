@@ -11,7 +11,7 @@ layout: default
 {% if authorCount == 0 %}
     No author
 {% elsif authorCount == 1 %}
-    {{ site.data.authors[page.authors | first].name }}
+    {{ page.authors | first }}
 {% else %}
     {% for author in page.authors %}
         {% if forloop.first %}
