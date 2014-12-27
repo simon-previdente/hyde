@@ -5,27 +5,7 @@ layout: default
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
   <span class="post-meta">
-    Article
-    {% assign authorCount = page.authors | size %}
-    {% if authorCount >= 1 %}
-      rédigé par 
-      {% if authorCount == 1 %}
-        {% assign author = page.authors | first %}
-        {{ site.data.authors[author].name }}
-      {% else %}
-        {% for author in page.authors %}
-            {% if forloop.first %}
-                {{ site.data.authors[author].name }}
-            {% elsif forloop.last %}
-                et {{ site.data.authors[author].name }}
-            {% else %}
-                , {{ site.data.authors[author].name }}
-            {% endif %}
-        {% endfor %}
-      {% endif %}
-    {% endif %}
-    
-    le
+    Article publié le
     {% assign dy = page.date | date: "%a" %}
     {% case dy %}
       {% when "Mon" %}Lundi
@@ -52,6 +32,25 @@ layout: default
       {% when '12' %}Décembre
     {% endcase %}
     {{ page.date | date: '%Y' }}
+    
+    {% assign authorCount = page.authors | size %}
+    {% if authorCount >= 1 %}
+      par 
+      {% if authorCount == 1 %}
+        {% assign author = page.authors | first %}
+        {{ site.data.authors[author].name }}
+      {% else %}
+        {% for author in page.authors %}
+            {% if forloop.first %}
+                {{ site.data.authors[author].name }}
+            {% elsif forloop.last %}
+                et {{ site.data.authors[author].name }}
+            {% else %}
+                , {{ site.data.authors[author].name }}
+            {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endif %}
   </span>
   
   {{ content }}
