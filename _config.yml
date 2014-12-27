@@ -4,14 +4,14 @@ highlighter:      pygments
 
 # Permalinks
 permalink:        pretty
-relative_permalinks: false
+relative_permalinks: true
 
 # Setup
 title:            Test
 tagline:          'A Jekyll theme'
 description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
-url:              
-baseurl: "/hyde"
+url: http://simon-previdente.github.io/hyde/
+baseurl: '/hyde'
 
 author:
   name:           'Mark Otto'
